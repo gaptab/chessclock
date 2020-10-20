@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Player 1">
+        <com.eldopp.chessclk.NumberPickerPreference
+            android:key="minutes_player1"
+            android:title="Select minutes"
+            android:defaultValue="5"
+            android:summary="5"/>
+        <com.eldopp.chessclk.NumberPickerPreference
+            android:key="seconds_player1"
+            android:title="Select seconds"
+            android:defaultValue="0"
+            android:summary="0"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="same_player2"
+            android:title="Different time Player 2"
+            android:summary="Set a different time control for each player"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Player 2"
+        android:dependency="same_player2">
+        <com.eldopp.chessclk.NumberPickerPreference
+            android:key="minutes_player2"
+            android:title="Select minutes"
+            android:defaultValue="3"
+            android:summary="3"/>
+        <com.eldopp.chessclk.NumberPickerPreference
+            android:key="seconds_player2"
+            android:title="Select seconds"
+            android:defaultValue="0"
+            android:summary="0"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Increment">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="increment"
+            android:title="Increment"
+            android:summary="Allow a time increment after each move"/>
+        <ListPreference
+            android:defaultValue="0"
+            android:dependency="increment"
+            android:title="Increment type"
+            android:summary="%s"
+            android:key="increment_type"
+            android:entries="@array/incrementtypes"
+            android:entryValues="@array/incrementtypesvalues" />
+        <com.eldopp.chessclk.NumberPickerPreference
+            android:dependency="increment"
+            android:key="increment_value"
+            android:title="Select seconds"
+            android:defaultValue="2"
+            android:summary="2"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Settings">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="orientation"
+            android:title="Orientation"
+            android:summary="Set the timers in landscape mode"/>
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="sound"
+            android:title="Sound"
+            android:summary="Play clock sound after each move"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="movecount"
+            android:title="Moves"
+            android:summary="Show number of moves played"/>
+
+
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>
